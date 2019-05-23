@@ -6,6 +6,7 @@ from six.moves import urllib
 import tarfile
 import zipfile
 import scipy.io
+import imageio
 from tensorflow.contrib import rnn
 
 from tensorflow.python.ops import array_ops
@@ -22,8 +23,8 @@ def focal_loss(prediction_tensor, target_tensor, weights=None, alpha1=1, alpha2=
 
 def save_image(image, save_dir, name, mean=None):
     if mean:
-        image = unprocess_image(image, mean)
-    misc.imsave(os.path.join(save_dir, name + ".png"), image)
+        image = unprocess_image(image, mean)  
+    imageio.imsave(os.path.join(save_dir, name + ".png"), image)
 
 
 def get_variable(weights, name):
